@@ -6,9 +6,6 @@ triggers:
   push:
     branches:
       - main
-  pr:
-    branches:
-      - main
 
 stages:
   - name: build
@@ -17,7 +14,6 @@ stages:
       - step: checkout
         name: checkout
         displayName: 下载代码
-        gitDepth: 1
       
       - step: build@shell
         name: build_apk
@@ -25,8 +21,8 @@ stages:
         inputs:
           shell: bash
           script: |
-            chmod +x gradlew
-            ./gradlew assembleDebug
+            chmod +x ./gradlew
+            ./gradlew assembleDebug --no-daemon
       
       - step: publish@general_artifacts
         name: upload_apk
