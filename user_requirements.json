@@ -1,0 +1,118 @@
+{
+  "app_name": "VideoPack",
+  "version": "1.0",
+  "package_name": "com.realestate.videopack",
+  "min_sdk": 24,
+  "target_sdk": 34,
+  "permissions": [
+    "WRITE_EXTERNAL_STORAGE",
+    "FOREGROUND_SERVICE",
+    "FOREGROUND_SERVICE_MEDIA_PROJECTION",
+    "POST_NOTIFICATIONS"
+  ],
+  "features": [
+    {
+      "id": "video_upload",
+      "name": "视频上传",
+      "description": "支持用户上传视频文件",
+      "priority": "high"
+    },
+    {
+      "id": "video_processing",
+      "name": "视频处理",
+      "description": "支持视频剪辑、添加字幕、添加背景音乐等处理功能",
+      "priority": "high"
+    },
+    {
+      "id": "tts",
+      "name": "文字转语音",
+      "description": "支持将文字转换为语音并添加到视频中",
+      "priority": "high"
+    },
+    {
+      "id": "compliance_check",
+      "name": "合规检查",
+      "description": "检查视频内容是否符合平台规定",
+      "priority": "medium"
+    },
+    {
+      "id": "batch_processing",
+      "name": "批量处理",
+      "description": "支持批量处理多个视频文件",
+      "priority": "medium"
+    },
+    {
+      "id": "video_preview",
+      "name": "视频预览",
+      "description": "支持预览处理后的视频效果",
+      "priority": "high"
+    },
+    {
+      "id": "video_export",
+      "name": "视频导出",
+      "description": "支持导出处理后的视频文件",
+      "priority": "high"
+    },
+    {
+      "id": "video_library",
+      "name": "视频库",
+      "description": "管理已处理的视频文件",
+      "priority": "medium"
+    },
+    {
+      "id": "settings",
+      "name": "设置",
+      "description": "应用设置功能",
+      "priority": "low"
+    }
+  ],
+  "ui_components": [
+    {
+      "id": "home_screen",
+      "name": "首页",
+      "description": "应用的主界面，包含功能入口",
+      "required": true
+    },
+    {
+      "id": "upload_screen",
+      "name": "上传界面",
+      "description": "视频上传界面",
+      "required": true
+    },
+    {
+      "id": "batch_screen",
+      "name": "批量处理界面",
+      "description": "批量处理视频的界面",
+      "required": true
+    },
+    {
+      "id": "preview_screen",
+      "name": "预览界面",
+      "description": "预览视频效果的界面",
+      "required": true
+    },
+    {
+      "id": "settings_screen",
+      "name": "设置界面",
+      "description": "应用设置界面",
+      "required": true
+    },
+    {
+      "id": "video_library_screen",
+      "name": "视频库界面",
+      "description": "管理视频文件的界面",
+      "required": true
+    }
+  ],
+  "performance": {
+    "startup_time": "< 3s",
+    "video_processing_speed": "< 2x video length",
+    "memory_usage": "< 500MB",
+    "battery_usage": "< 10% per 10min"
+  },
+  "compatibility": {
+    "screen_sizes": ["small", "normal", "large", "xlarge"],
+    "screen_densities": ["ldpi", "mdpi", "hdpi", "xhdpi", "xxhdpi", "xxxhdpi"],
+    "android_versions": ["7.0", "7.1", "8.0", "8.1", "9.0", "10.0", "11.0", "12.0", "13.0", "14.0"]
+  }
+}

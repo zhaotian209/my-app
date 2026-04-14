@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 完整权限声明，包含mediaProjection专属权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:name=".VideoPackApp"
+        android:allowBackup="true"
+        android:icon="@android:drawable/ic_menu_gallery"
+        android:label="@string/app_name"
+        android:roundIcon="@android:drawable/ic_menu_gallery"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.Material.Light.NoActionBar">
+
+        <activity
+            android:name=".presentation.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 视频渲染后台服务，带版本兼容 -->
+        <service
+            android:name=".core.service.VideoRenderService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection"
+            tools:targetApi="30" />
+
+        <!-- AndroidX初始化Provider，解决合并冲突 -->
+        <provider
+            android:name="androidx.startup.InitializationProvider"
+            android:authorities="${applicationId}.androidx-startup"
+            android:exported="false"
+            tools:node="merge" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">房产视频一键包装</string>
+    <string name="title_home">首页</string>
+    <string name="title_video_library">视频库</string>
+    <string name="title_settings">设置</string>
+    <string name="select_video">选择视频</string>
+    <string name="browse_videos">浏览视频</string>
+    <string name="quick_pack">快速包装</string>
+    <string name="start_pack">开始包装</string>
+    <string name="pack_preview">包装效果预览</string>
+    <string name="video_preview">视频预览</string>
+    <string name="video_quality">视频质量</string>
+    <string name="hd_1080p">高清 (1080p)</string>
+    <string name="save_location">保存位置</string>
+    <string name="internal_storage_videos">内部存储 / 视频</string>
+    <string name="about">关于</string>
+    <string name="app_version">房产视频一键包装 v1.0</string>
+    <string name="copyright">© 2026 房产视频包装</string>
+    <string name="video_rendering">视频渲染中</string>
+    <string name="processing_video_pack">正在处理视频包装</string>
+</resources>
