@@ -22,10 +22,13 @@ jobs:
         distribution: 'temurin'
         cache: gradle
       
-    - name: Fix gradlew line endings and set permissions
-      run: |
-        sed -i 's/\r$//' gradlew
-        chmod +x gradlew
+    - name: Fix gradlew CRLF issue
+      run: python3 -c "
+import pathlib
+p = pathlib.Path('gradlew')
+p.write_bytes(p.read_bytes().replace(b'\r\n', b'\n'))
+p.chmod(0o755)
+"
       
     - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon --stacktrace
