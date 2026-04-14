@@ -15,6 +15,15 @@ jobs:
       with:
         fetch-depth: 1
       
+    - name: Debug - Check files
+      run: |
+        echo "=== Listing files ==="
+        ls -la
+        echo "=== Check gradlew ==="
+        file gradlew || echo "gradlew not found"
+        echo "=== Check .gitattributes ==="
+        cat .gitattributes || echo "no .gitattributes"
+      
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
