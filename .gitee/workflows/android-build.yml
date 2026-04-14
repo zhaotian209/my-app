@@ -26,6 +26,7 @@ stages:
           gradleVersion: '8.5'
           goals: 'assembleDebug'
           jdkVersion: 17
+          useWrapper: true
       
       - step: publish@general_artifacts
         name: publish
@@ -33,3 +34,4 @@ stages:
         inputs:
           dependArtifact: 'app/build/outputs/apk/debug/*.apk'
           artifactName: app-debug.apk
+        dependOn: build
