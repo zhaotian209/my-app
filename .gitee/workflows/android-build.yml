@@ -1,5 +1,5 @@
 version: '1.0'
-name: android-build
+name: android-apk-build
 displayName: Android APK 构建
 
 triggers:
@@ -11,27 +11,27 @@ triggers:
       - main
 
 stages:
-  - name: compile
-    displayName: 编译
+  - name: build
+    displayName: 构建 APK
     steps:
       - step: checkout
         name: checkout
         displayName: 下载代码
         gitDepth: 1
       
-      - step: build@gradle
-        name: build
-        displayName: Gradle 构建
+      - step: build@shell
+        name: build_apk
+        displayName: 编译 APK
         inputs:
-          gradleVersion: '8.5'
-          goals: 'assembleDebug'
-          jdkVersion: 17
-          useWrapper: true
+          shell: bash
+          script: |
+            chmod +x gradlew
+            ./gradlew assembleDebug
       
       - step: publish@general_artifacts
-        name: publish
-        displayName: 上传产物
+        name: upload_apk
+        displayName: 上传 APK
         inputs:
           dependArtifact: 'app/build/outputs/apk/debug/*.apk'
           artifactName: app-debug.apk
-        dependOn: build
+        dependOn: build_apk
