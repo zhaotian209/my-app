@@ -24,13 +24,24 @@ jobs:
       
     - name: Download clean gradlew from official source
       run: |
+        echo "=== Before: Check files ==="
+        ls -la
+        echo "=== Remove old gradlew ==="
         rm -f gradlew gradlew.bat
+        echo "=== Download clean gradlew ==="
         curl -L https://raw.githubusercontent.com/gradle/gradle/master/gradlew -o gradlew
         curl -L https://raw.githubusercontent.com/gradle/gradle/master/gradlew.bat -o gradlew.bat
         chmod +x gradlew
+        echo "=== After: Verify gradlew ==="
+        ls -la gradlew
+        file gradlew
+        head -1 gradlew
       
     - name: Build Debug APK
-      run: ./gradlew assembleDebug --no-daemon --stacktrace
+      run: |
+        echo "=== Starting build ==="
+        ./gradlew --version
+        ./gradlew assembleDebug --no-daemon --stacktrace
       
     - name: Upload APK
       uses: actions/upload-artifact@v4
