@@ -22,13 +22,12 @@ jobs:
         distribution: 'temurin'
         cache: gradle
       
-    - name: Fix gradlew CRLF issue
-      run: python3 -c "
-import pathlib
-p = pathlib.Path('gradlew')
-p.write_bytes(p.read_bytes().replace(b'\r\n', b'\n'))
-p.chmod(0o755)
-"
+    - name: Download clean gradlew from official source
+      run: |
+        rm -f gradlew gradlew.bat
+        curl -L https://raw.githubusercontent.com/gradle/gradle/master/gradlew -o gradlew
+        curl -L https://raw.githubusercontent.com/gradle/gradle/master/gradlew.bat -o gradlew.bat
+        chmod +x gradlew
       
     - name: Build Debug APK
       run: ./gradlew assembleDebug --no-daemon --stacktrace
