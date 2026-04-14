@@ -27,12 +27,17 @@ jobs:
       
     - name: Debug info
       run: |
+        echo "=== Current directory ==="
+        pwd
         echo "=== File structure ==="
         ls -la
-        echo "=== Gradle wrapper ==="
-        ls -la gradlew*
+        echo "=== Gradle wrapper check ==="
+        file gradlew
+        head -3 gradlew
         echo "=== Java version ==="
         java -version
+        echo "=== Gradlew test ==="
+        ./gradlew --version || echo "gradlew failed with exit code: $?"
         
     - name: Build APK
       run: ./gradlew assembleDebug --info
